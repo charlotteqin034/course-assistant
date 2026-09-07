@@ -1,0 +1,1 @@
+VECTOR_STORE_PATH = "./db/vector_store"

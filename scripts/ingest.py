@@ -1,5 +1,5 @@
 from pypdf import PdfReader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 import json
 
 def parse_pdf_text(pdf_path):
@@ -30,7 +30,7 @@ def parse_pdf_text(pdf_path):
 
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=500,
-    chunkOverlap=50,
+    chunk_overlap=50,
     separators=["\n\n", "\n", ". ", " "]
 )
 
@@ -38,18 +38,26 @@ with open("data/processed/201", "r", encoding="utf-8") as file:
     text_201 = file.read()
 chunk_201 = splitter.split_text(text_201)
 
-with open("data/processed/201", "r", encoding="utf-8") as file:
-    text_201 = file.read()
-chunk_201 = splitter.split_text(text_201)
+with open("data/processed/270", "r", encoding="utf-8") as file:
+    text_270 = file.read()
+chunk_270 = splitter.split_text(text_270)
 
-with open("data/processed/201", "r", encoding="utf-8") as file:
-    text_201 = file.read()
-chunk_201 = splitter.split_text(text_201)
+with open("data/processed/304", "r", encoding="utf-8") as file:
+    text_304 = file.read()
+chunk_304 = splitter.split_text(text_304)
 
-with open("data/processed/201", "r", encoding="utf-8") as file:
-    text_201 = file.read()
-chunk_201 = splitter.split_text(text_201)
-
-
+with open("data/processed/352", "r", encoding="utf-8") as file:
+    text_352 = file.read()
+chunk_352 = splitter.split_text(text_352)
 
 
+
+
+with open("data/processed/201_chunked", "w", encoding="utf-8") as file:
+    json.dump(chunk_201, file, ensure_ascii=False, indent=4)
+with open("data/processed/270_chunked", "w", encoding="utf-8") as file:
+    json.dump(chunk_270, file, ensure_ascii=False, indent=4)
+with open("data/processed/304_chunked", "w", encoding="utf-8") as file:
+    json.dump(chunk_304, file, ensure_ascii=False, indent=4)
+with open("data/processed/352_chunked", "w", encoding="utf-8") as file:
+    json.dump(chunk_352, file, ensure_ascii=False, indent=4) 
